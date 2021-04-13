@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cea1d428b2792a04496d02acf6190457, type: 3}
-  m_Name: Item
+  m_Name: Item_bk
   m_EditorClassIdentifier: 
   itemList:
   - itemId: 1
@@ -23,11 +23,3 @@ MonoBehaviour:
     dropItemName2: "\u6CB9"
     dropPrefab2: {fileID: 282013018959244136, guid: 771e390019d98244d91725267c4141f4,
       type: 3}
-  - itemId: 2
-    itemName: "\u30AC\u30B9\u30B3\u30F3\u30ED"
-    dropItemId1: 3
-    dropItemName1: "\u9244\u304F\u305A"
-    dropPrefab1: {fileID: 0}
-    dropItemId2: 4
-    dropItemName2: "\u30AC\u30B9\u7F36"
-    dropPrefab2: {fileID: 0}
