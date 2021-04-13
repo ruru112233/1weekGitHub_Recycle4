@@ -6,19 +6,24 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public GameObject itemPanel;
+    public GameObject wpnPanel;
 
     public ItemManager item;
+    public ItemManager wpnItem;
 
     public SelectItem selectItem;
     public SyntheticController synthetic;
     public ItemSprite itemSprite;
+    private ItemFlagManager itemFlagManager;
 
-    public GameObject dropItem1, dropItem2;
     public GameObject itemText;
 
     // アイテム一覧表示/非表示のフラグ
     public bool itemListFlag = false;
     public bool itemFlag2 = false;
+
+    // 武器一覧表示/非表示
+    public bool wpnFlag = false;
 
     public static GameManager instance;
 
@@ -34,6 +39,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         itemPanel.SetActive(false);
+        wpnPanel.SetActive(false);
+
+        itemFlagManager = GameObject.Find("ItemFlagManager").GetComponent<ItemFlagManager>();
     }
 
     // Update is called once per frame
@@ -46,15 +54,28 @@ public class GameManager : MonoBehaviour
             itemListFlag = !itemListFlag;
 
             // アイテム一覧を閉じた時に、矢印を削除する。
-            if (!itemListFlag)
-            {
-                GameObject arrowObj = GameObject.FindGameObjectWithTag("Arrow");
-                Destroy(arrowObj);
-            }
+            DestroyArrow();
 
             itemPanel.SetActive(itemListFlag);
+
+            wpnFlag = false;
+            wpnPanel.SetActive(wpnFlag);
             itemFlag2 = true;
         }
+
+        // 武器一覧を表示/非表示にするキー
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            wpnFlag = !wpnFlag;
+
+            // アイテム一覧を閉じた時に、矢印を削除する。
+            itemListFlag = false;
+            DestroyArrow();
+
+            wpnPanel.SetActive(wpnFlag);
+            itemPanel.SetActive(itemListFlag);
+        }
+
 
         // spaceでアイテムを選択
         if (itemListFlag)
@@ -68,15 +89,59 @@ public class GameManager : MonoBehaviour
                 {
                     synthetic.synthetic1Id = selectItem.transform.GetChild(2).GetChild(0).GetChild(0).GetChild(currentId).GetComponent<SelectebleText>().itemId;
                     synthetic.transform.GetChild(0).GetComponent<Image>().sprite = ChengeSprite(synthetic.synthetic1Id);
+                    ItemCheck(synthetic.synthetic1Id);
                 }
                 else if (synthetic.synthetic2Id == 0)
                 {
                     synthetic.synthetic2Id = selectItem.transform.GetChild(2).GetChild(0).GetChild(0).GetChild(currentId).GetComponent<SelectebleText>().itemId;
                     synthetic.transform.GetChild(1).GetComponent<Image>().sprite = ChengeSprite(synthetic.synthetic2Id);
+                    ItemCheck(synthetic.synthetic2Id);
                 }
             }
         }
 
+        // 合成可能な組み合わせの場合、決定ボタンで合成する
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            if (itemFlagManager.wpnItem1)
+            {
+                GameObject wpnText = Instantiate(GameManager.instance.itemText) as GameObject;
+                wpnText.GetComponent<Text>().text = wpnItem.itemList[0].itemName;
+                wpnText.transform.parent = wpnPanel.transform.GetChild(2).GetChild(0).GetChild(0);
+                wpnText.SetActive(true);
+            }
+        }
+
+    }
+
+    // 合成アイテムの判定
+    void ItemCheck(int itemId)
+    {
+        switch (itemId)
+        {
+            case 1:
+                itemFlagManager.item1 = true;
+                break;
+            case 2:
+                itemFlagManager.item2 = true;
+                break;
+            case 3:
+                itemFlagManager.item3 = true;
+                break;
+            case 4:
+                itemFlagManager.item4 = true;
+                break;
+        }
+    }
+
+    void DestroyArrow()
+    {
+        itemPanel.SetActive(true);
+        if (!itemListFlag)
+        {
+            GameObject arrowObj = GameObject.FindGameObjectWithTag("Arrow");
+            Destroy(arrowObj);
+        }
     }
 
     // Spriteを切り替える

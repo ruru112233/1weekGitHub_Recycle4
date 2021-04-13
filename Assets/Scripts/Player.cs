@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!GameManager.instance.itemListFlag)
+        if (!GameManager.instance.itemListFlag && !GameManager.instance.wpnFlag)
         {
             float x = Input.GetAxis("Horizontal");
             float y = Input.GetAxis("Vertical");
