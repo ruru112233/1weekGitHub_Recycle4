@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class SelectItem : MonoBehaviour
 {
@@ -43,35 +44,42 @@ public class SelectItem : MonoBehaviour
     {
         if (GameManager.instance.itemFlag2)
         {
-            // 一旦全て削除する
-            selectableTexts.Clear();
-
-            // アイテムテキストを全て取得
-            GameObject[] itemsObj = GameObject.FindGameObjectsWithTag("ItemText");
-
-            // アイテムを１つでも所持していた場合
-            if (itemsObj.Length != 0)
-            {
-                // 取得したアイテムテキストをselectebleTextリストへ格納
-                foreach (GameObject selectebleText in itemsObj)
-                {
-                    selectableTexts.Add(selectebleText.GetComponent<SelectebleText>());
-                }
-
-                // 矢印を生成し、一番上の選択肢に矢印を付ける
-                GameObject arrowObj = Instantiate(this.arrowObj);
-                arrowObj.transform.parent = itemsObj[0].transform;
-
-                // 矢印をSelectItemのarrow変数へ代入
-                this.arrow = GameObject.FindGameObjectWithTag("Arrow").transform;
-
-                // 関数を実行
-                SetMoveArrowFunction();
-            }
+            NewSelectItem();
 
             GameManager.instance.itemFlag2 = false;
         }
     }
 
+    public void NewSelectItem()
+    {
+
+        // 一旦全て削除する
+        selectableTexts.Clear();
+
+        
+        // アイテムテキストを全て取得
+        GameObject[] itemsObj = GameObject.FindGameObjectsWithTag("ItemText");
+
+        // アイテムを１つでも所持していた場合
+        if (itemsObj.Length != 0)
+        {
+            // 取得したアイテムテキストをselectebleTextリストへ格納
+            foreach (GameObject selectebleText in itemsObj)
+            {
+                selectableTexts.Add(selectebleText.GetComponent<SelectebleText>());
+            }
+
+            // 矢印を生成し、一番上の選択肢に矢印を付ける
+            GameObject arrowObj = Instantiate(this.arrowObj);
+            arrowObj.transform.parent = itemsObj[0].transform;
+
+            // 矢印をSelectItemのarrow変数へ代入
+            this.arrow = GameObject.FindGameObjectWithTag("Arrow").transform;
+
+            // 関数を実行
+            SetMoveArrowFunction();
+        }
+        
+    }
 
 }
