@@ -18,17 +18,8 @@ public class SearchCharacter : MonoBehaviour
         {
             Debug.Log("発見");
             moveEnemy.isSearch = false;
+            moveEnemy.isChase = true;
         }
         
     }
-    /*
-    void OnTriggerExit(Collider col)
-    {
-        if (col.tag == "Player")
-        {
-            Debug.Log("見失う");
-           
-        }
-    }
-    */
 }
