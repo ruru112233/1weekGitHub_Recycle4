@@ -14,6 +14,7 @@ public class Item
 {
     public int itemId;
     public string itemName;
+    public GameObject itemPrefab;
     public int dropItemId1;
     public string dropItemName1;
     public GameObject dropPrefab1;

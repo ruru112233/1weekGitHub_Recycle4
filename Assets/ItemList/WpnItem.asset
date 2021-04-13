@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cea1d428b2792a04496d02acf6190457, type: 3}
+  m_Name: WpnItem
+  m_EditorClassIdentifier: 
+  itemList:
+  - itemId: 1
+    itemName: "\u30AC\u30B9\u30D0\u30FC\u30CA\u30FC"
+    dropItemId1: 0
+    dropItemName1: 
+    dropPrefab1: {fileID: 0}
+    dropItemId2: 0
+    dropItemName2: 
+    dropPrefab2: {fileID: 0}
