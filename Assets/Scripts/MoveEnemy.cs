@@ -87,7 +87,7 @@ public class MoveEnemy : MonoBehaviour
             {
                 startPositionX = transform.position.x;
                 isDown = false;
-                isLeft = true
+                isLeft = true;
             }
         }
         if (isLeft)
