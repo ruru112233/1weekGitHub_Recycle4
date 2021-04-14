@@ -4,114 +4,201 @@ using UnityEngine;
 
 public class MoveEnemy : MonoBehaviour
 {
-    public float speed;
 
-    public bool isSearch;
-    public bool isChase;
-    public int searchDistance;
 
-    bool isUp;
-    bool isDown;
-    bool isRight;
-    bool isLeft;
-    float startPositionY;
-    float startPositionX;
-    float nowPosition;
+    //ゴキ
+    GameObject goik;
+    public float speedG;
+    public bool isSearchG;
+    public int searchDistanceG;
+    bool isUpG;
+    bool isDownG;
+    bool isRightG;
+    bool isLeftG;
+    float startPositionYG;
+    float startPositionXG;
+    float nowPositionG;
 
-    public Transform target;
+    //ハエ
+    public float speedH;
+    public bool isSearchH;
+    public int searchDistanceH;
+    bool isRightUpH;
+    bool isRightDownH;
+    bool isLeftUpH;
+    bool isLeftDownH;
+    float startPositionYH;
+    float nowPositionH;
+    int countRight;
+    int countLeft;
 
     void Start()
     {
-        isSearch = true;
-        isUp = true;
-        isDown = false;
-        isLeft = false;
-        isRight = false;
-        startPositionY = transform.position.y;
-        startPositionX = transform.position.x;
-
+        //ゴキ
+        isSearchG = true;
+        isUpG = true;
+        isDownG = false;
+        isLeftG = false;
+        isRightG = false;
+        startPositionYG = transform.position.y;
+        startPositionXG = transform.position.x;
+        //ハエ
+        isSearchH = true;
+        isRightUpH = true;
+        isRightDownH = false;
+        isLeftUpH = false;
+        isLeftDownH = false;
+        startPositionYH = transform.position.y;
+        countRight = 0;
+        countLeft = 0;
     }
 
 
-    private void FixedUpdate()
-    {
-        if (isSearch)
-        {
-            Search();
-        }
-        if (isChase)
-        {
-            Chase();
-        }
 
-    }
-
-    void Search()
+    
+    //ゴキ見回り
+    public void GokiSearch()
     {
-        if (isUp)
+        if (isUpG)
         {
-            Debug.Log("上");
-            nowPosition = transform.position.y;
+            //Debug.Log("上");
+            nowPositionG = transform.position.y;
             transform.eulerAngles = new Vector3(0f, 0f, 90f);
-            if (nowPosition - startPositionY < searchDistance)
-                transform.position += new Vector3(0, speed * Time.deltaTime, 0);
+            if (nowPositionG - startPositionYG < searchDistanceG)
+                transform.position += new Vector3(0, speedG * Time.deltaTime, 0);
             else
             {
-                startPositionX = transform.position.x;
-                isUp = false;
-                isRight = true;
+                startPositionXG = transform.position.x;
+                isUpG = false;
+                isRightG = true;
             }
         }
-        if (isRight)
+        if (isRightG)
         {
-            Debug.Log("右");
-            nowPosition = transform.position.x;
+            //Debug.Log("右");
+            nowPositionG = transform.position.x;
             transform.eulerAngles = new Vector3(0f, 0f, 0f);
-            if (nowPosition - startPositionX < searchDistance)
-                transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
+            if (nowPositionG - startPositionXG < searchDistanceG)
+                transform.position += new Vector3(speedG* Time.deltaTime, 0, 0);
             else
             {
-                startPositionY = transform.position.y;
-                isRight = false;
-                isDown = true;
+                startPositionYG = transform.position.y;
+                isRightG = false;
+                isDownG = true;
             }
         }
-        if (isDown)
+        if (isDownG)
         {
-            Debug.Log("下");
-            nowPosition = transform.position.y;
+            //Debug.Log("下");
+            nowPositionG = transform.position.y;
             transform.eulerAngles = new Vector3(0f, 0f, -90f);
-            if (nowPosition - startPositionY > -searchDistance )
-                transform.position += new Vector3(0, -speed * Time.deltaTime, 0);
+            if (nowPositionG - startPositionYG > -searchDistanceG )
+                transform.position += new Vector3(0, -speedG * Time.deltaTime, 0);
             else
             {
-                startPositionX = transform.position.x;
-                isDown = false;
-                isLeft = true;
+                startPositionXG = transform.position.x;
+                isDownG = false;
+                isLeftG = true;
             }
         }
-        if (isLeft)
+        if (isLeftG)
         {
-            Debug.Log("左");
-            nowPosition = transform.position.x;
+            //Debug.Log("左");
+            nowPositionG = transform.position.x;
             transform.eulerAngles = new Vector3(0f, 0f, -180f);
-            if (nowPosition - startPositionX > -searchDistance )
-                transform.position += new Vector3(-speed * Time.deltaTime, 0, 0);
+            if (nowPositionG - startPositionXG > -searchDistanceG )
+                transform.position += new Vector3(-speedG * Time.deltaTime, 0, 0);
             else
             {
-                startPositionY = transform.position.y;
-                isLeft = false;
-                isUp = true;
+                startPositionYG = transform.position.y;
+                isLeftG = false;
+                isUpG = true;
             }
         }
     }
-    void Chase()
-    {
-        if (isChase)
-        {
-            Debug.Log("発見");
-            transform.LookAt(target);
 
+    //ハエ見回り
+    public void HaeSearch()
+    {
+        if (isRightUpH)
+        {
+            nowPositionH = transform.position.y;
+            transform.eulerAngles = new Vector3(0f, 0f, 45f);
+            //Debug.Log("右上");
+            if (nowPositionH - startPositionYH < searchDistanceH)
+                transform.position += new Vector3(speedH * Time.deltaTime, speedH * Time.deltaTime, 0);
+            else
+            {
+                startPositionYH = transform.position.y;
+                isRightUpH = false;
+                isRightDownH = true;
+            }
+        }
+        if (isRightDownH)
+        {
+            //Debug.Log("右下");
+            nowPositionH = transform.position.y;
+            transform.eulerAngles = new Vector3(0f, 0f, -45f);
+            if (nowPositionH - startPositionYH > -searchDistanceH)
+                transform.position += new Vector3(speedH * Time.deltaTime, -speedH * Time.deltaTime, 0);
+            else
+            {
+                startPositionYH = transform.position.y;
+                if(countRight == 0)
+                {
+                    countRight = 1;
+                    isRightDownH = false;
+                    isRightUpH = true;
+
+                }
+                else
+                {
+                    countRight = 0;
+                    isRightDownH = false;
+                    isLeftUpH = true;
+                }
+                
+            }
+        }
+        if (isLeftUpH)
+        {
+            //Debug.Log("左上");
+            nowPositionH = transform.position.y;
+            transform.eulerAngles = new Vector3(0f, 0f, 135f);
+            if (nowPositionH - startPositionYH < searchDistanceH)
+                transform.position += new Vector3(-speedH * Time.deltaTime, speedH * Time.deltaTime, 0);
+            else
+            {
+                startPositionYH = transform.position.y;
+                isLeftUpH = false;
+                isLeftDownH = true;
+            }
+        }
+        if (isLeftDownH)
+        {
+            //Debug.Log("左下");
+            nowPositionH = transform.position.y;
+            transform.eulerAngles = new Vector3(0f, 0f, -135f);
+            if (nowPositionH - startPositionYH > -searchDistanceH)
+                transform.position += new Vector3(-speedH * Time.deltaTime, -speedH * Time.deltaTime, 0);
+            else
+            {
+                startPositionYH = transform.position.y;
+                if (countLeft == 0)
+                {
+                    countLeft = 1;
+                    isLeftDownH = false;
+                    isLeftUpH = true;
+
+                }
+                else
+                {
+                    countLeft = 0;
+                    isLeftDownH = false;
+                    isRightUpH = true;
+                }
+            }
         }
     }
+
 }
