@@ -156,12 +156,26 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
         {
             GameObject[] itemsObj = GameObject.FindGameObjectsWithTag("ItemText");
+            GameObject[] wpnObjs = GameObject.FindGameObjectsWithTag("Wpn");
+
+            // 全ての色を変更する
+            foreach (GameObject obj in itemsObj)
+            {
+                obj.GetComponent<Text>().color = Color.white;
+            }
+
+            // 装備品を一旦削除する
+            foreach (GameObject wpnObj in wpnObjs)
+            {
+                Destroy(wpnObj);
+            }
 
             // 武器を１つでも所持していた場合
             if (itemsObj.Length != 0)
             {
                 int itemId = GameObject.Find("WpnPanel").transform.GetChild(2).GetChild(0).GetChild(0).GetSiblingIndex();
                 WpnEquipment(itemsObj[itemId].GetComponent<SelectebleText>().itemId);
+                itemsObj[itemId].GetComponent<Text>().color = Color.yellow;
             }
         }
     }

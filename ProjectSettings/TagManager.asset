@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ItemText
   - Arrow
+  - Wpn
   layers:
   - Default
   - TransparentFX
