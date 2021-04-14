@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SearchCharacter : MonoBehaviour
+public class SearchCharacterG : MonoBehaviour
 {
 
     private MoveEnemy moveEnemy;
@@ -16,9 +16,8 @@ public class SearchCharacter : MonoBehaviour
     {
         if (col.tag == "Player")
         {
-            Debug.Log("発見");
-            moveEnemy.isSearch = false;
-            moveEnemy.isChase = true;
+            //Debug.Log("発見");
+            moveEnemy.speedG = 4;
         }
         
     }
