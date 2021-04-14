@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        /*
         // 上に発射
         if (player.transform.position.x > transform.position.x && player.transform.position.y < transform.position.y)
         {
@@ -41,6 +41,7 @@ public class Bullet : MonoBehaviour
         {
             transform.position += new Vector3(-speed * Time.deltaTime, 0, 0);
         }
+        */
 
     }
 

@@ -861,6 +861,10 @@ MonoBehaviour:
   synthetic: {fileID: 916915630}
   itemSprite: {fileID: 186609699}
   itemText: {fileID: 1334617638}
+  upFlag: 0
+  downFlag: 0
+  rightFlag: 0
+  leftFlag: 0
   itemListFlag: 0
   itemFlag2: 0
   wpnFlag: 0
@@ -58271,17 +58275,17 @@ PrefabInstance:
     - target: {fileID: 5455437251681804189, guid: 29562035f1485ac40bd9520dbc74553b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5455437251681804189, guid: 29562035f1485ac40bd9520dbc74553b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5455437251681804189, guid: 29562035f1485ac40bd9520dbc74553b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5455437251681804189, guid: 29562035f1485ac40bd9520dbc74553b,
         type: 3}
