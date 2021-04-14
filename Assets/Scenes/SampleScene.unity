@@ -224,6 +224,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f036d64612fdbf147b439ea71761d18b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName:
+  - "\u30E9\u30A4\u30BF\u30FC"
+  - "\u9244\u304F\u305A"
+  - "\u30AC\u30B9\u7F36"
   sprites:
   - {fileID: -7494233361544967276, guid: 9b668f6a1f89caa47ae64052eaf293d6, type: 3}
   - {fileID: -1770054491999242339, guid: 9b668f6a1f89caa47ae64052eaf293d6, type: 3}

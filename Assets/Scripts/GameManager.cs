@@ -49,7 +49,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        KeyAction();
+    }
 
+    // キー操作
+    void KeyAction()
+    {
         // 取得アイテム一覧を表示/非表示にするキー
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -111,14 +116,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-        }
 
-        IEnumerator SelectAction()
-        {
-            itemSelectFlag = false;
-            yield return new WaitForSeconds(0.3f);
-            itemSelectFlag = true;
-            selectItem.NewSelectItem();
         }
 
         // 合成可能な組み合わせの場合、決定ボタンで合成する
@@ -126,13 +124,74 @@ public class GameManager : MonoBehaviour
         {
             if (itemFlagManager.wpnItem1)
             {
-                GameObject wpnText = Instantiate(GameManager.instance.itemText) as GameObject;
-                wpnText.GetComponent<Text>().text = wpnItem.itemList[0].itemName;
-                wpnText.transform.parent = wpnPanel.transform.GetChild(2).GetChild(0).GetChild(0);
-                wpnText.SetActive(true);
+                // ガスバーナー
+                WpnText(0);
+            }
+
+            if (itemFlagManager.wpnItem2)
+            {
+                // 火縄銃
+                WpnText(1);
             }
         }
 
+        // 合成をキャンセルする
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            if (synthetic.synthetic1Id != 0)
+            {
+                GameObject itemText = Instantiate(GameManager.instance.itemText) as GameObject;
+                itemText.GetComponent<Text>().text = itemSprite.itemName[synthetic.synthetic1Id - 1];
+                itemText.GetComponent<SelectebleText>().itemId = synthetic.synthetic1Id;
+                itemText.transform.parent = GameManager.instance.itemPanel.transform.GetChild(2).GetChild(0).GetChild(0);
+                itemText.SetActive(true);
+
+                synthetic.transform.GetChild(0).GetComponent<Image>().sprite = null;
+                synthetic.synthetic1Id = 0;
+            }
+
+            if (synthetic.synthetic2Id != 0)
+            {
+                GameObject itemText = Instantiate(GameManager.instance.itemText) as GameObject;
+                itemText.GetComponent<Text>().text = itemSprite.itemName[synthetic.synthetic2Id - 1];
+                itemText.GetComponent<SelectebleText>().itemId = synthetic.synthetic2Id;
+                itemText.transform.parent = GameManager.instance.itemPanel.transform.GetChild(2).GetChild(0).GetChild(0);
+                itemText.SetActive(true);
+
+                synthetic.transform.GetChild(1).GetComponent<Image>().sprite = null;
+                synthetic.synthetic2Id = 0;
+            }
+
+            // 矢印を削除する
+            GameObject arrowObj1 = GameObject.FindGameObjectWithTag("Arrow");
+
+            Destroy(arrowObj1);
+
+            StartCoroutine(SelectAction());
+
+        }
+    }
+
+    IEnumerator SelectAction()
+    {
+        itemSelectFlag = false;
+        yield return new WaitForSeconds(0.3f);
+        itemSelectFlag = true;
+        selectItem.NewSelectItem();
+    }
+
+    string ItemName(int itemId)
+    {
+        string itemName = null;
+
+        switch (itemId)
+        {
+            case 1:
+                //item.itemList[0].dropItemId1;
+                break;
+        }
+
+        return itemName;
     }
 
     // 合成アイテムの判定
@@ -153,6 +212,15 @@ public class GameManager : MonoBehaviour
                 itemFlagManager.item4 = true;
                 break;
         }
+    }
+
+    // 合成アイテムのテキストを生成
+    void WpnText(int id)
+    {
+        GameObject wpnText = Instantiate(GameManager.instance.itemText) as GameObject;
+        wpnText.GetComponent<Text>().text = wpnItem.itemList[id].itemName;
+        wpnText.transform.parent = wpnPanel.transform.GetChild(2).GetChild(0).GetChild(0);
+        wpnText.SetActive(true);
     }
 
     void DestroyArrow()
