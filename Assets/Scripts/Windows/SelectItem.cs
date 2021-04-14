@@ -56,9 +56,6 @@ public class SelectItem : MonoBehaviour
         // 一旦全て削除する
         selectableTexts.Clear();
 
-        
-        
-
         // アイテムテキストを全て取得
         GameObject[] itemsObj = GameObject.FindGameObjectsWithTag("ItemText");
 

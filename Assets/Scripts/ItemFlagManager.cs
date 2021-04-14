@@ -29,4 +29,15 @@ public class ItemFlagManager : MonoBehaviour
         }
     }
 
+    public void OffFlag()
+    {
+         item1 = false; // ライター
+         item2 = false; // 鉄くず
+         item3 = false; // ガス缶
+         item4 = false; // 
+
+         wpnItem1 = false; // ガスバーナー
+         wpnItem2 = false; // 火縄銃
+    }
+
 }
