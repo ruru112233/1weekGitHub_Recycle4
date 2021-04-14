@@ -7,7 +7,6 @@ public class MoveEnemy : MonoBehaviour
 
 
     //ゴキ
-    GameObject goik;
     public float speedG;
     public bool isSearchG;
     public int searchDistanceG;
@@ -32,10 +31,22 @@ public class MoveEnemy : MonoBehaviour
     int countRight;
     int countLeft;
 
+    //ボス
+    public float speedB;
+    public bool isBattleB;
+    public int searchDistanceB;
+    bool isUpB;
+    bool isDownB;
+    bool isRightB;
+    bool isLeftB;
+    float startPositionYB;
+    float startPositionXB;
+    float nowPositionB;
+    int bossRightCount; 
+
     void Start()
     {
         //ゴキ
-        isSearchG = true;
         isUpG = true;
         isDownG = false;
         isLeftG = false;
@@ -43,7 +54,6 @@ public class MoveEnemy : MonoBehaviour
         startPositionYG = transform.position.y;
         startPositionXG = transform.position.x;
         //ハエ
-        isSearchH = true;
         isRightUpH = true;
         isRightDownH = false;
         isLeftUpH = false;
@@ -51,6 +61,15 @@ public class MoveEnemy : MonoBehaviour
         startPositionYH = transform.position.y;
         countRight = 0;
         countLeft = 0;
+        //ボス
+        isRightB = true;
+        isDownB = false;
+        isLeftB = false;
+        isUpB = false;
+        bossRightCount = 0;
+        startPositionYB = transform.position.y;
+        startPositionXB = transform.position.x;
+
     }
 
 
@@ -65,7 +84,9 @@ public class MoveEnemy : MonoBehaviour
             nowPositionG = transform.position.y;
             transform.eulerAngles = new Vector3(0f, 0f, 90f);
             if (nowPositionG - startPositionYG < searchDistanceG)
+            {
                 transform.position += new Vector3(0, speedG * Time.deltaTime, 0);
+            }
             else
             {
                 startPositionXG = transform.position.x;
@@ -79,7 +100,9 @@ public class MoveEnemy : MonoBehaviour
             nowPositionG = transform.position.x;
             transform.eulerAngles = new Vector3(0f, 0f, 0f);
             if (nowPositionG - startPositionXG < searchDistanceG)
-                transform.position += new Vector3(speedG* Time.deltaTime, 0, 0);
+            {
+                transform.position += new Vector3(speedG * Time.deltaTime, 0, 0);
+            }
             else
             {
                 startPositionYG = transform.position.y;
@@ -92,8 +115,10 @@ public class MoveEnemy : MonoBehaviour
             //Debug.Log("下");
             nowPositionG = transform.position.y;
             transform.eulerAngles = new Vector3(0f, 0f, -90f);
-            if (nowPositionG - startPositionYG > -searchDistanceG )
+            if (nowPositionG - startPositionYG > -searchDistanceG)
+            {
                 transform.position += new Vector3(0, -speedG * Time.deltaTime, 0);
+            }
             else
             {
                 startPositionXG = transform.position.x;
@@ -106,8 +131,10 @@ public class MoveEnemy : MonoBehaviour
             //Debug.Log("左");
             nowPositionG = transform.position.x;
             transform.eulerAngles = new Vector3(0f, 0f, -180f);
-            if (nowPositionG - startPositionXG > -searchDistanceG )
+            if (nowPositionG - startPositionXG > -searchDistanceG)
+            {
                 transform.position += new Vector3(-speedG * Time.deltaTime, 0, 0);
+            }
             else
             {
                 startPositionYG = transform.position.y;
@@ -126,7 +153,9 @@ public class MoveEnemy : MonoBehaviour
             transform.eulerAngles = new Vector3(0f, 0f, 45f);
             //Debug.Log("右上");
             if (nowPositionH - startPositionYH < searchDistanceH)
+            {
                 transform.position += new Vector3(speedH * Time.deltaTime, speedH * Time.deltaTime, 0);
+            }
             else
             {
                 startPositionYH = transform.position.y;
@@ -140,7 +169,9 @@ public class MoveEnemy : MonoBehaviour
             nowPositionH = transform.position.y;
             transform.eulerAngles = new Vector3(0f, 0f, -45f);
             if (nowPositionH - startPositionYH > -searchDistanceH)
+            {
                 transform.position += new Vector3(speedH * Time.deltaTime, -speedH * Time.deltaTime, 0);
+            }
             else
             {
                 startPositionYH = transform.position.y;
@@ -166,7 +197,9 @@ public class MoveEnemy : MonoBehaviour
             nowPositionH = transform.position.y;
             transform.eulerAngles = new Vector3(0f, 0f, 135f);
             if (nowPositionH - startPositionYH < searchDistanceH)
+            {
                 transform.position += new Vector3(-speedH * Time.deltaTime, speedH * Time.deltaTime, 0);
+            }
             else
             {
                 startPositionYH = transform.position.y;
@@ -180,7 +213,9 @@ public class MoveEnemy : MonoBehaviour
             nowPositionH = transform.position.y;
             transform.eulerAngles = new Vector3(0f, 0f, -135f);
             if (nowPositionH - startPositionYH > -searchDistanceH)
+            {
                 transform.position += new Vector3(-speedH * Time.deltaTime, -speedH * Time.deltaTime, 0);
+            }
             else
             {
                 startPositionYH = transform.position.y;
@@ -197,6 +232,97 @@ public class MoveEnemy : MonoBehaviour
                     isLeftDownH = false;
                     isRightUpH = true;
                 }
+            }
+        }
+    }
+
+    //ボス
+    public void BossBattle()
+    {
+        if (isRightB)
+        {
+            if(bossRightCount == 0)
+            {
+
+                //Debug.Log("右１回目");
+                nowPositionB = transform.position.x;
+                transform.eulerAngles = new Vector3(0f, 0f, -90f);
+                if (nowPositionB - startPositionXB < searchDistanceB / 2)
+                {
+                    transform.position += new Vector3(speedB * Time.deltaTime, 0, 0);
+                }
+                else
+                {
+                    bossRightCount = 1;
+                    startPositionYB = transform.position.y;
+                    isRightB = false;
+                    isDownB = true;
+                }
+            }
+            else
+            {
+                //Debug.Log("右2回目");
+                nowPositionB = transform.position.x;
+                transform.eulerAngles = new Vector3(0f, 0f, -90f);
+                if (nowPositionB - startPositionXB < searchDistanceB)
+                {
+                    transform.position += new Vector3(speedB * Time.deltaTime, 0, 0);
+                }
+                else
+                {
+                    startPositionYB = transform.position.y;
+                    isRightB = false;
+                    isDownB = true;
+                }
+            }
+            
+        }
+        if (isDownB)
+        {
+            //Debug.Log("下");
+            nowPositionB = transform.position.y;
+            transform.eulerAngles = new Vector3(0f, 0f, -180f);
+            if (nowPositionB - startPositionYB > -searchDistanceB)
+            {
+                transform.position += new Vector3(0, -speedB * Time.deltaTime, 0);
+            }
+            else
+            {
+                startPositionXB = transform.position.x;
+                isDownB = false;
+                isLeftB = true;
+            }
+        }
+        if (isLeftB)
+        {
+            //Debug.Log("左");
+            nowPositionB = transform.position.x;
+            transform.eulerAngles = new Vector3(0f, 0f, 90f);
+            if (nowPositionB - startPositionXB > -searchDistanceB)
+            {
+                transform.position += new Vector3(-speedB * Time.deltaTime, 0, 0);
+            }
+            else
+            {
+                startPositionYB = transform.position.y;
+                isLeftB = false;
+                isUpB = true;
+            }
+        }
+        if (isUpB)
+        {
+            //Debug.Log("上");
+            nowPositionB = transform.position.y;
+            transform.eulerAngles = new Vector3(0f, 0f, 0f);
+            if (nowPositionB - startPositionYB < searchDistanceB)
+            {
+                transform.position += new Vector3(0, speedB * Time.deltaTime, 0);
+            }
+            else
+            {
+                startPositionXB = transform.position.x;
+                isUpB = false;
+                isRightB = true;
             }
         }
     }
