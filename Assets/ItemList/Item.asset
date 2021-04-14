@@ -14,22 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemList:
   - itemId: 1
-    itemName: "\u30E9\u30A4\u30BF\u30FC"
+    itemName: "\u5B9D\u7BB11"
+    itemPrefab: {fileID: 0}
     dropItemId1: 1
-    dropItemName1: "\u7740\u706B\u88C5\u7F6E"
+    dropItemName1: "\u30E9\u30A4\u30BF\u30FC"
     dropPrefab1: {fileID: 214355630773248530, guid: d3d2a9faf7e062d40bda06071c02c453,
       type: 3}
     dropItemId2: 2
-    dropItemName2: "\u6CB9"
+    dropItemName2: "\u9244\u304F\u305A"
     dropPrefab2: {fileID: 282013018959244136, guid: 771e390019d98244d91725267c4141f4,
       type: 3}
   - itemId: 2
-    itemName: "\u30AC\u30B9\u30B3\u30F3\u30ED"
-    dropItemId1: 3
+    itemName: "\u5B9D\u7BB12"
+    itemPrefab: {fileID: 0}
+    dropItemId1: 2
     dropItemName1: "\u9244\u304F\u305A"
-    dropPrefab1: {fileID: 2803346105605045841, guid: 002de32b1f1f3bd4f9389a347b697b97,
+    dropPrefab1: {fileID: 282013018959244136, guid: 771e390019d98244d91725267c4141f4,
       type: 3}
-    dropItemId2: 4
+    dropItemId2: 3
     dropItemName2: "\u30AC\u30B9\u7F36"
     dropPrefab2: {fileID: 7796208741503530608, guid: 971c8302fb6cb6d448166d9f00f463aa,
       type: 3}

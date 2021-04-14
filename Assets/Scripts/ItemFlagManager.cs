@@ -4,22 +4,28 @@ using UnityEngine;
 
 public class ItemFlagManager : MonoBehaviour
 {
-    public bool item1 = false; // 着火装置
-    public bool item2 = false; // 油
-    public bool item3 = false; // 鉄くず
-    public bool item4 = false; // ガス缶
+    public bool item1 = false; // ライター
+    public bool item2 = false; // 鉄くず
+    public bool item3 = false; // ガス缶
+    public bool item4 = false; // 
 
     public bool wpnItem1 = false; // ガスバーナー
+    public bool wpnItem2 = false; // 火縄銃
 
     private void Update()
     {
-        if (item1 && item4)
+        if (item1 && item2)
+        {
+            wpnItem2 = true;
+        }
+        else if (item2 && item3)
         {
             wpnItem1 = true;
         }
         else
         {
             wpnItem1 = false;
+            wpnItem2 = false;
         }
     }
 
