@@ -58,6 +58,7 @@ public class SelectItem : MonoBehaviour
 
         // アイテムテキストを全て取得
         GameObject[] itemsObj = GameObject.FindGameObjectsWithTag("ItemText");
+        GameObject[] wpnTextObj = GameObject.FindGameObjectsWithTag("WpnText");
 
         // アイテムを１つでも所持していた場合
         if (itemsObj.Length != 0)
@@ -78,7 +79,27 @@ public class SelectItem : MonoBehaviour
             // 関数を実行
             SetMoveArrowFunction();
         }
-        
+
+        // 武器の場合
+        if (wpnTextObj.Length != 0)
+        {
+            // 取得したアイテムテキストをselectebleTextリストへ格納
+            foreach (GameObject selectebleText in wpnTextObj)
+            {
+                selectableTexts.Add(selectebleText.GetComponent<SelectebleText>());
+            }
+
+            // 矢印を生成し、一番上の選択肢に矢印を付ける
+            GameObject arrowObj = Instantiate(this.arrowObj);
+            arrowObj.transform.parent = wpnTextObj[0].transform;
+
+            // 矢印をSelectItemのarrow変数へ代入
+            this.arrow = GameObject.FindGameObjectWithTag("Arrow").transform;
+
+            // 関数を実行
+            SetMoveArrowFunction();
+        }
+
     }
 
 }
