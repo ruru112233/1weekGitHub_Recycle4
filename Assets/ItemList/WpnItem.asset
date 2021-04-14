@@ -24,7 +24,8 @@ MonoBehaviour:
     dropPrefab2: {fileID: 0}
   - itemId: 1
     itemName: "\u706B\u7E04\u9283"
-    itemPrefab: {fileID: 0}
+    itemPrefab: {fileID: 5455437251681804187, guid: 29562035f1485ac40bd9520dbc74553b,
+      type: 3}
     dropItemId1: 0
     dropItemName1: 
     dropPrefab1: {fileID: 0}
