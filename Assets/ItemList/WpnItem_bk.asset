@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cea1d428b2792a04496d02acf6190457, type: 3}
-  m_Name: WpnItem
+  m_Name: WpnItem_bk
   m_EditorClassIdentifier: 
   itemList:
   - itemId: 1
@@ -23,7 +23,7 @@ MonoBehaviour:
     dropItemId2: 0
     dropItemName2: 
     dropPrefab2: {fileID: 0}
-  - itemId: 2
+  - itemId: 1
     itemName: "\u706B\u7E04\u9283"
     itemPrefab: {fileID: 5455437251681804187, guid: 29562035f1485ac40bd9520dbc74553b,
       type: 3}

@@ -860,9 +860,11 @@ MonoBehaviour:
   item: {fileID: 11400000, guid: 8c491fbf6f6c5ef49ac1563343f427de, type: 2}
   wpnItem: {fileID: 11400000, guid: d4e641f0c4bc5b243bf3c3f5ce398afe, type: 2}
   selectItem: {fileID: 1873045086}
+  selectWpn: {fileID: 423107472}
   synthetic: {fileID: 916915630}
   itemSprite: {fileID: 186609699}
   itemText: {fileID: 1334617638}
+  wpnText: {fileID: 1444887381}
   upFlag: 0
   downFlag: 0
   rightFlag: 0
@@ -939,7 +941,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "S:\u88C5\u5099"
+  m_Text: "Y:\u88C5\u5099"
 --- !u!222 &880763465
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -43233,7 +43235,7 @@ GameObject:
   - component: {fileID: 1444887383}
   m_Layer: 5
   m_Name: ItemText
-  m_TagString: ItemText
+  m_TagString: WpnText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -14,11 +14,13 @@ public class GameManager : MonoBehaviour
     public ItemManager wpnItem;
 
     public SelectItem selectItem;
+    public SelectItem selectWpn;
     public SyntheticController synthetic;
     public ItemSprite itemSprite;
     private ItemFlagManager itemFlagManager;
 
     public GameObject itemText;
+    public GameObject wpnText;
 
     // 火縄銃の上下左右フラグ
     public bool upFlag = false;
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     // 武器一覧表示/非表示
     public bool wpnFlag = false;
+    public bool wpnSelectFlag = false;
 
     public static GameManager instance;
 
@@ -153,29 +156,27 @@ public class GameManager : MonoBehaviour
         }
 
         // 武器を装備する
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.Y))
         {
-            GameObject[] itemsObj = GameObject.FindGameObjectsWithTag("ItemText");
+            GameObject[] wpnTexts = GameObject.FindGameObjectsWithTag("WpnText");
             GameObject[] wpnObjs = GameObject.FindGameObjectsWithTag("Wpn");
 
             // 全ての色を変更する
-            foreach (GameObject obj in itemsObj)
-            {
-                obj.GetComponent<Text>().color = Color.white;
-            }
+            foreach (GameObject obj in wpnTexts) obj.GetComponent<Text>().color = Color.white;
 
             // 装備品を一旦削除する
-            foreach (GameObject wpnObj in wpnObjs)
-            {
-                Destroy(wpnObj);
-            }
+            foreach (GameObject wpnObj in wpnObjs) Destroy(wpnObj);
+
+            //Debug.Log(wpnTexts.Length);
 
             // 武器を１つでも所持していた場合
-            if (itemsObj.Length != 0)
+            if (wpnTexts.Length != 0)
             {
-                int itemId = GameObject.Find("WpnPanel").transform.GetChild(2).GetChild(0).GetChild(0).GetSiblingIndex();
-                WpnEquipment(itemsObj[itemId].GetComponent<SelectebleText>().itemId);
-                itemsObj[itemId].GetComponent<Text>().color = Color.yellow;
+                int itemId = selectWpn.currentId;
+                WpnEquipment(wpnTexts[itemId - 1].GetComponent<SelectebleText>().itemId - 1);
+                wpnTexts[itemId - 1].GetComponent<Text>().color = Color.yellow;
+
+                WpnSelectAction();
             }
         }
     }
@@ -251,6 +252,14 @@ public class GameManager : MonoBehaviour
         selectItem.NewSelectItem();
     }
 
+    IEnumerator WpnSelectAction()
+    {
+        wpnSelectFlag = false;
+        yield return new WaitForSeconds(0.3f);
+        wpnSelectFlag = true;
+        selectItem.NewSelectItem();
+    }
+
     // 合成アイテムの判定
     void ItemCheck(int itemId)
     {
@@ -274,7 +283,7 @@ public class GameManager : MonoBehaviour
     // 合成アイテムのテキストを生成
     void WpnText(int id)
     {
-        GameObject wpnText = Instantiate(GameManager.instance.itemText) as GameObject;
+        GameObject wpnText = Instantiate(this.wpnText) as GameObject;
         wpnText.GetComponent<Text>().text = wpnItem.itemList[id].itemName;
         wpnText.GetComponent<SelectebleText>().itemId = wpnItem.itemList[id].itemId;
         wpnText.transform.parent = wpnPanel.transform.GetChild(2).GetChild(0).GetChild(0);
