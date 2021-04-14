@@ -15,6 +15,16 @@ MonoBehaviour:
   itemList:
   - itemId: 1
     itemName: "\u30AC\u30B9\u30D0\u30FC\u30CA\u30FC"
+    itemPrefab: {fileID: 0}
+    dropItemId1: 0
+    dropItemName1: 
+    dropPrefab1: {fileID: 0}
+    dropItemId2: 0
+    dropItemName2: 
+    dropPrefab2: {fileID: 0}
+  - itemId: 1
+    itemName: "\u706B\u7E04\u9283"
+    itemPrefab: {fileID: 0}
     dropItemId1: 0
     dropItemName1: 
     dropPrefab1: {fileID: 0}

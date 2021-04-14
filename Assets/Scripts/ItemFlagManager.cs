@@ -14,13 +14,13 @@ public class ItemFlagManager : MonoBehaviour
 
     private void Update()
     {
-        if (item1 && item2)
-        {
-            wpnItem2 = true;
-        }
-        else if (item2 && item3)
+        if (item1 && item3)
         {
             wpnItem1 = true;
+        }
+        else if (item1 && item2)
+        {
+            wpnItem2 = true;
         }
         else
         {
