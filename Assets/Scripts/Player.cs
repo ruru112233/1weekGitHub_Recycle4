@@ -17,11 +17,15 @@ public class Player : MonoBehaviour
             if (x > 0)
             {
                 transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
+                GameManager.instance.HinawajyuOffFlag();
+                GameManager.instance.rightFlag = true;
             }
 
             if (x < 0)
             {
                 transform.position += new Vector3(-speed * Time.deltaTime, 0, 0);
+                GameManager.instance.HinawajyuOffFlag();
+                GameManager.instance.leftFlag = true;
             }
 
 
@@ -29,11 +33,15 @@ public class Player : MonoBehaviour
             if (y > 0)
             {
                 transform.position += new Vector3(0, speed * Time.deltaTime, 0);
+                GameManager.instance.HinawajyuOffFlag();
+                GameManager.instance.upFlag = true;
             }
 
             if (y < 0)
             {
                 transform.position += new Vector3(0, -speed * Time.deltaTime, 0);
+                GameManager.instance.HinawajyuOffFlag();
+                GameManager.instance.downFlag = true;
             }
         }
 

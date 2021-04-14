@@ -19,6 +19,12 @@ public class GameManager : MonoBehaviour
 
     public GameObject itemText;
 
+    // 火縄銃の上下左右フラグ
+    public bool upFlag = false;
+    public bool downFlag = false;
+    public bool rightFlag = false;
+    public bool leftFlag = false;
+
     // アイテム一覧表示/非表示のフラグ
     public bool itemListFlag = false;
     public bool itemFlag2 = false;
@@ -240,4 +246,13 @@ public class GameManager : MonoBehaviour
 
         return chengeSprite;
     }
+
+    // 火縄銃のFlag操作
+    public void HinawajyuOffFlag()
+    {
+        upFlag = false;
+        downFlag = false;
+        rightFlag = false;
+        leftFlag = false;
+}
 }
