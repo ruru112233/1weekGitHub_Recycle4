@@ -33,3 +33,13 @@ MonoBehaviour:
     dropItemId2: 0
     dropItemName2: 
     dropPrefab2: {fileID: 0}
+  - itemId: 3
+    itemName: "\u5F13"
+    itemPrefab: {fileID: 68749900635862703, guid: 5d3742d501a401c4b905fc22e20136cf,
+      type: 3}
+    dropItemId1: 0
+    dropItemName1: 
+    dropPrefab1: {fileID: 0}
+    dropItemId2: 0
+    dropItemName2: 
+    dropPrefab2: {fileID: 0}

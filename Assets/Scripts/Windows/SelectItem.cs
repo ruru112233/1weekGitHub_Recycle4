@@ -42,19 +42,18 @@ public class SelectItem : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.itemFlag2)
+        if (GameManager.instance.itemFlag2 || GameManager.instance.wpnFlag2)
         {
             NewSelectItem();
 
             GameManager.instance.itemFlag2 = false;
+            GameManager.instance.wpnFlag2 = false;
         }
+
     }
 
     public void NewSelectItem()
     {
-
-        // 一旦全て削除する
-        selectableTexts.Clear();
 
         // アイテムテキストを全て取得
         GameObject[] itemsObj = GameObject.FindGameObjectsWithTag("ItemText");
@@ -63,6 +62,9 @@ public class SelectItem : MonoBehaviour
         // アイテムを１つでも所持していた場合
         if (itemsObj.Length != 0)
         {
+            // 一旦全て削除する
+            selectableTexts.Clear();
+
             // 取得したアイテムテキストをselectebleTextリストへ格納
             foreach (GameObject selectebleText in itemsObj)
             {
@@ -83,14 +85,17 @@ public class SelectItem : MonoBehaviour
         // 武器の場合
         if (wpnTextObj.Length != 0)
         {
+            // 一旦全て削除する
+            selectableTexts.Clear();
+
             // 取得したアイテムテキストをselectebleTextリストへ格納
             foreach (GameObject selectebleText in wpnTextObj)
             {
                 selectableTexts.Add(selectebleText.GetComponent<SelectebleText>());
             }
 
-            // 矢印を生成し、一番上の選択肢に矢印を付ける
             GameObject arrowObj = Instantiate(this.arrowObj);
+
             arrowObj.transform.parent = wpnTextObj[0].transform;
 
             // 矢印をSelectItemのarrow変数へ代入

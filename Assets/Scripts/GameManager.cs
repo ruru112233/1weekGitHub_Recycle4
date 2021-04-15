@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     // 武器一覧表示/非表示
     public bool wpnFlag = false;
+    public bool wpnFlag2 = false;
     public bool wpnSelectFlag = false;
 
     public static GameManager instance;
@@ -88,13 +89,14 @@ public class GameManager : MonoBehaviour
             wpnFlag = !wpnFlag;
 
             // アイテム一覧を閉じた時に、矢印を削除する。
-            itemListFlag = false;
             DestroyArrow();
 
-            selectItem.NewSelectItem();
-
             wpnPanel.SetActive(wpnFlag);
+            //selectItem.NewSelectItem();
+
+            itemListFlag = false;
             itemPanel.SetActive(itemListFlag);
+            wpnFlag2 = true;
         }
 
         // spaceでアイテムを選択
@@ -147,6 +149,13 @@ public class GameManager : MonoBehaviour
                 {
                     // 火縄銃
                     WpnText(1);
+                    ItemGousei();
+                }
+
+                if (itemFlagManager.wpnItem3)
+                {
+                    // 弓
+                    WpnText(2);
                     ItemGousei();
                 }
             }
@@ -330,15 +339,24 @@ public class GameManager : MonoBehaviour
         if (!itemListFlag)
         {
             itemPanel.SetActive(true);
-            GameObject arrowObj = GameObject.FindGameObjectWithTag("Arrow");
-            Destroy(arrowObj);
+            GameObject[] arrowsObj = GameObject.FindGameObjectsWithTag("Arrow");
+
+            foreach (GameObject arrowObj in arrowsObj)
+            {
+                Destroy(arrowObj);
+            }
+
         }
 
         if (!wpnFlag)
         {
             wpnPanel.SetActive(true);
-            GameObject arrowObj = GameObject.FindGameObjectWithTag("Arrow");
-            Destroy(arrowObj);
+            GameObject[] arrowsObj = GameObject.FindGameObjectsWithTag("Arrow");
+
+            foreach (GameObject arrowObj in arrowsObj)
+            {
+                Destroy(arrowObj);
+            }
         }
     }
 

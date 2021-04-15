@@ -22,7 +22,7 @@ public class ItemFlagManager : MonoBehaviour
         {
             wpnItem1 = true;
         }
-        else if (item1 && item2)
+        else if (item4 && item5)
         {
             wpnItem3 = true;
         }

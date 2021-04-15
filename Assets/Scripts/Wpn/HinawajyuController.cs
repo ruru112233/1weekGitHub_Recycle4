@@ -15,14 +15,13 @@ public class HinawajyuController : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0);
+        transform.position = new Vector3(player.transform.position.x + 0.2f, player.transform.position.y - 1, 0);
+        transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-
         if (GameManager.instance.upFlag)
         {
             transform.position = new Vector3(player.transform.position.x - 0.2f, player.transform.position.y + 1, 0);
@@ -43,7 +42,6 @@ public class HinawajyuController : MonoBehaviour
             transform.position = new Vector3(player.transform.position.x - 1f, player.transform.position.y -0.2f, 0);
             transform.rotation = Quaternion.Euler(0, 0, 270);
         }
-
 
         // 銃弾の発射
         if (Input.GetKeyDown(KeyCode.G))
