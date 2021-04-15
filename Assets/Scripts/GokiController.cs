@@ -16,7 +16,7 @@ public class GokiController : MonoBehaviour
         moveEnemy = GetComponentInParent<MoveEnemy>();
         moveEnemy.isSearchG = true;
         moveEnemy.speedG = 2;
-        moveEnemy.searchDistanceG = 2;
+        moveEnemy.searchDistanceG = 5;
         life = 5;
 
     }

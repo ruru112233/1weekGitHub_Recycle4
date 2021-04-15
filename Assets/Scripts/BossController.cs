@@ -17,8 +17,8 @@ public class BossController : MonoBehaviour
     {
         moveEnemy = GetComponentInParent<MoveEnemy>();
         moveEnemy.isBattleB = true;
-        moveEnemy.speedB = 3;
-        moveEnemy.searchDistanceB = 10;
+        moveEnemy.speedB = 8;
+        moveEnemy.searchDistanceB = 24;
         life = 5;
 
         _tf = this.transform;
