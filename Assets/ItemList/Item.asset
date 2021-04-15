@@ -20,18 +20,46 @@ MonoBehaviour:
     dropItemName1: "\u30E9\u30A4\u30BF\u30FC"
     dropPrefab1: {fileID: 214355630773248530, guid: d3d2a9faf7e062d40bda06071c02c453,
       type: 3}
-    dropItemId2: 2
-    dropItemName2: "\u9244\u304F\u305A"
-    dropPrefab2: {fileID: 282013018959244136, guid: 771e390019d98244d91725267c4141f4,
-      type: 3}
+    dropItemId2: 0
+    dropItemName2: 
+    dropPrefab2: {fileID: 0}
   - itemId: 2
     itemName: "\u5B9D\u7BB12"
     itemPrefab: {fileID: 0}
-    dropItemId1: 1
-    dropItemName1: "\u30E9\u30A4\u30BF\u30FC"
-    dropPrefab1: {fileID: 214355630773248530, guid: d3d2a9faf7e062d40bda06071c02c453,
+    dropItemId1: 2
+    dropItemName1: "\u9244\u304F\u305A"
+    dropPrefab1: {fileID: 282013018959244136, guid: 771e390019d98244d91725267c4141f4,
       type: 3}
-    dropItemId2: 3
-    dropItemName2: "\u30AC\u30B9\u7F36"
-    dropPrefab2: {fileID: 7796208741503530608, guid: 971c8302fb6cb6d448166d9f00f463aa,
+    dropItemId2: 0
+    dropItemName2: 
+    dropPrefab2: {fileID: 0}
+  - itemId: 3
+    itemName: "\u5B9D\u7BB12"
+    itemPrefab: {fileID: 0}
+    dropItemId1: 3
+    dropItemName1: "\u30AC\u30B9\u7F36"
+    dropPrefab1: {fileID: 7796208741503530608, guid: 971c8302fb6cb6d448166d9f00f463aa,
       type: 3}
+    dropItemId2: 0
+    dropItemName2: 
+    dropPrefab2: {fileID: 0}
+  - itemId: 4
+    itemName: "\u5B9D\u7BB12"
+    itemPrefab: {fileID: 0}
+    dropItemId1: 4
+    dropItemName1: "\u6728\u306E\u68D2"
+    dropPrefab1: {fileID: 3284862498073206756, guid: 2e93647e87baca343b2474e1e5f5d954,
+      type: 3}
+    dropItemId2: 0
+    dropItemName2: 
+    dropPrefab2: {fileID: 0}
+  - itemId: 5
+    itemName: "\u5B9D\u7BB12"
+    itemPrefab: {fileID: 0}
+    dropItemId1: 5
+    dropItemName1: "\u6728\u306E\u3064\u308B"
+    dropPrefab1: {fileID: 3162996222283631743, guid: a4aac59e0ccb4d84abff5e89bbb074d2,
+      type: 3}
+    dropItemId2: 0
+    dropItemName2: 
+    dropPrefab2: {fileID: 0}

@@ -102,10 +102,11 @@ public class GameManager : MonoBehaviour
         {
             if (itemSelectFlag)
             {
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    int currentId = selectItem.currentId;
+                GameObject[] itemsObj = GameObject.FindGameObjectsWithTag("ItemText");
+                int currentId = selectItem.currentId;
 
+                if (Input.GetKeyDown(KeyCode.Space) && itemsObj.Length != 0)
+                {
                     if (synthetic.synthetic1Id == 0)
                     {
                         GameObject item1 = selectItem.transform.GetChild(2).GetChild(0).GetChild(0).GetChild(currentId).gameObject;
@@ -117,7 +118,6 @@ public class GameManager : MonoBehaviour
                     }
                     else if (synthetic.synthetic2Id == 0)
                     {
-
                         GameObject item2 = selectItem.transform.GetChild(2).GetChild(0).GetChild(0).GetChild(currentId).gameObject;
                         synthetic.synthetic2Id = item2.GetComponent<SelectebleText>().itemId;
                         synthetic.transform.GetChild(1).GetComponent<Image>().sprite = ChengeSprite(synthetic.synthetic2Id);
@@ -133,6 +133,7 @@ public class GameManager : MonoBehaviour
         // 合成可能な組み合わせの場合、決定ボタンで合成する
         if (Input.GetKeyDown(KeyCode.K))
         {
+
             if (itemFlagManager.wpnItem1)
             {
                 // ガスバーナー
@@ -166,8 +167,6 @@ public class GameManager : MonoBehaviour
 
             // 装備品を一旦削除する
             foreach (GameObject wpnObj in wpnObjs) Destroy(wpnObj);
-
-            //Debug.Log(wpnTexts.Length);
 
             // 武器を１つでも所持していた場合
             if (wpnTexts.Length != 0)

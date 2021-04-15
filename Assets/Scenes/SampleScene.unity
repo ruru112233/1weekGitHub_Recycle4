@@ -228,10 +228,14 @@ MonoBehaviour:
   - "\u30E9\u30A4\u30BF\u30FC"
   - "\u9244\u304F\u305A"
   - "\u30AC\u30B9\u7F36"
+  - "\u6728\u306E\u68D2"
+  - "\u6728\u306E\u3064\u308B"
   sprites:
   - {fileID: -7494233361544967276, guid: 9b668f6a1f89caa47ae64052eaf293d6, type: 3}
   - {fileID: -1770054491999242339, guid: 9b668f6a1f89caa47ae64052eaf293d6, type: 3}
   - {fileID: -4104264844957524092, guid: 9b668f6a1f89caa47ae64052eaf293d6, type: 3}
+  - {fileID: 21300000, guid: d2f069cd86edc9043a9b3656187bfcf3, type: 3}
+  - {fileID: 21300000, guid: 7dae5a07a692cc44dba5b45917647ea4, type: 3}
 --- !u!4 &186609700
 Transform:
   m_ObjectHideFlags: 0
@@ -42714,8 +42718,12 @@ MonoBehaviour:
   item2: 0
   item3: 0
   item4: 0
+  item5: 0
+  item5_1: 0
+  item6: 0
   wpnItem1: 0
   wpnItem2: 0
+  wpnItem3: 0
 --- !u!4 &1289734010
 Transform:
   m_ObjectHideFlags: 0
@@ -58179,6 +58187,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemBox2
       objectReference: {fileID: 0}
+    - target: {fileID: 4105302231251264173, guid: 9b8c309976f506f4b8306b468167e384,
+        type: 3}
+      propertyPath: vPos1
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4105302231251264173, guid: 9b8c309976f506f4b8306b468167e384,
+        type: 3}
+      propertyPath: itemId
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4105302231251264175, guid: 9b8c309976f506f4b8306b468167e384,
         type: 3}
       propertyPath: m_RootOrder
@@ -58302,6 +58320,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262091976395198263, guid: 9177fca5ea77ce64bb533d69f9bae804,
+        type: 3}
+      propertyPath: hPos1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262091976395198263, guid: 9177fca5ea77ce64bb533d69f9bae804,
+        type: 3}
+      propertyPath: vPos1
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262091976395198263, guid: 9177fca5ea77ce64bb533d69f9bae804,
+        type: 3}
+      propertyPath: itemId
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9177fca5ea77ce64bb533d69f9bae804, type: 3}
