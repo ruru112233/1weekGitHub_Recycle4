@@ -30,7 +30,7 @@ public class GokiController : MonoBehaviour
             moveEnemy.GokiSearch();
         }
 
-        if( life < 2)
+        if( life < 3)
         {
             Debug.Log("確認");
             moveEnemy.speedG = 10;
