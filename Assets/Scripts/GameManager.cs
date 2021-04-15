@@ -122,6 +122,7 @@ public class GameManager : MonoBehaviour
                         synthetic.synthetic2Id = item2.GetComponent<SelectebleText>().itemId;
                         synthetic.transform.GetChild(1).GetComponent<Image>().sprite = ChengeSprite(synthetic.synthetic2Id);
                         ItemCheck(synthetic.synthetic2Id);
+
                         Destroy(item2);
                         StartCoroutine(SelectAction());
                     }
@@ -133,19 +134,43 @@ public class GameManager : MonoBehaviour
         // 合成可能な組み合わせの場合、決定ボタンで合成する
         if (Input.GetKeyDown(KeyCode.K))
         {
-
-            if (itemFlagManager.wpnItem1)
+            if (!itemFlagManager.item5_1)
             {
-                // ガスバーナー
-                WpnText(0);
-                ItemGousei();
+                if (itemFlagManager.wpnItem1)
+                {
+                    // ガスバーナー
+                    WpnText(0);
+                    ItemGousei();
+                }
+
+                if (itemFlagManager.wpnItem2)
+                {
+                    // 火縄銃
+                    WpnText(1);
+                    ItemGousei();
+                }
             }
-
-            if (itemFlagManager.wpnItem2)
+            else
             {
-                // 火縄銃
-                WpnText(1);
-                ItemGousei();
+                // 縄を生成する。
+                GameObject itemText = Instantiate(GameManager.instance.itemText) as GameObject;
+                itemText.GetComponent<Text>().text = itemSprite.itemName[5];
+                itemText.GetComponent<SelectebleText>().itemId = 6;
+                itemText.transform.parent = itemPanel.transform.GetChild(2).GetChild(0).GetChild(0);
+                itemText.SetActive(true);
+                synthetic.transform.GetChild(0).GetComponent<Image>().sprite = null;
+                synthetic.synthetic1Id = 0;
+                synthetic.transform.GetChild(1).GetComponent<Image>().sprite = null;
+                synthetic.synthetic2Id = 0;
+
+                // 矢印を削除する
+                GameObject arrowObj1 = GameObject.FindGameObjectWithTag("Arrow");
+
+                Destroy(arrowObj1);
+
+                StartCoroutine(SelectAction());
+
+                itemFlagManager.OffFlag();
             }
 
         }
@@ -191,7 +216,6 @@ public class GameManager : MonoBehaviour
             itemText.GetComponent<SelectebleText>().itemId = synthetic.synthetic1Id;
             itemText.transform.parent = GameManager.instance.itemPanel.transform.GetChild(2).GetChild(0).GetChild(0);
             itemText.SetActive(true);
-
             synthetic.transform.GetChild(0).GetComponent<Image>().sprite = null;
             synthetic.synthetic1Id = 0;
         }
@@ -203,7 +227,6 @@ public class GameManager : MonoBehaviour
             itemText.GetComponent<SelectebleText>().itemId = synthetic.synthetic2Id;
             itemText.transform.parent = GameManager.instance.itemPanel.transform.GetChild(2).GetChild(0).GetChild(0);
             itemText.SetActive(true);
-
             synthetic.transform.GetChild(1).GetComponent<Image>().sprite = null;
             synthetic.synthetic2Id = 0;
         }
@@ -275,6 +298,19 @@ public class GameManager : MonoBehaviour
                 break;
             case 4:
                 itemFlagManager.item4 = true;
+                break;
+            case 5:
+                if (!itemFlagManager.item5)
+                {
+                    itemFlagManager.item5 = true;
+                }
+                else
+                {
+                    itemFlagManager.item5_1 = true;
+                }
+                break;
+            case 6:
+                itemFlagManager.item6 = true;
                 break;
         }
     }
