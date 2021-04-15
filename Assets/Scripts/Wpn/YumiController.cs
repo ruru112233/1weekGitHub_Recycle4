@@ -18,13 +18,14 @@ public class YumiController : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0);
+        transform.position = new Vector3(player.transform.position.x + 0.2f, player.transform.position.y - 1, 0);
+        transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
         if (GameManager.instance.upFlag)
         {
             transform.position = new Vector3(player.transform.position.x - 0.2f, player.transform.position.y + 1, 0);
