@@ -6,7 +6,7 @@ public class haeController : MonoBehaviour
 {
     private MoveEnemy moveEnemy;
 
-    int life;
+    private int life;
 
     void Start()
     {

@@ -7,6 +7,9 @@ public class GokiController : MonoBehaviour
 
     private MoveEnemy moveEnemy;
 
+    private int life;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,10 +17,11 @@ public class GokiController : MonoBehaviour
         moveEnemy.isSearchG = true;
         moveEnemy.speedG = 2;
         moveEnemy.searchDistanceG = 2;
+        life = 5;
 
     }
 
-    
+
 
     private void FixedUpdate()
     {
@@ -26,5 +30,15 @@ public class GokiController : MonoBehaviour
             moveEnemy.GokiSearch();
         }
 
+        if (life == 0)
+        {
+            Destroy(this.gameObject);
+        }
+
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        life -= 1;
+        Debug.Log("ダメージ! 残りHP" + life);
     }
 }

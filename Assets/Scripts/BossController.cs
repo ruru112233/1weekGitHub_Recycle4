@@ -9,7 +9,7 @@ public class BossController : MonoBehaviour
     int life;
 
     [SerializeField]
-    private GameObject _burret; //弾のプレファブ。inspectorで指定する
+    private GameObject _burret; 
 
     private Transform _tf;
 
@@ -51,4 +51,5 @@ public class BossController : MonoBehaviour
         // 弾をプレイヤーと同じ位置/角度で作成
         Instantiate(_burret, _tf.position, _tf.rotation);
     }
+
 }
