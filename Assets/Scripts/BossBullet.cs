@@ -24,7 +24,7 @@ public class BossBullet : MonoBehaviour
     {
         
         time += Time.deltaTime;
-        if (time > 3)
+        if (time > 1)
         {
             Destroy(this.gameObject);
         }
