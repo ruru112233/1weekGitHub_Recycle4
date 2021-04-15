@@ -5,8 +5,8 @@ using UnityEngine;
 public class ItemController : MonoBehaviour
 {
     public int itemId;
-    public int hPos1, hPos2;
-    public int vPos1, vPos2;
+    public int hPos1;
+    public int vPos1;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -18,10 +18,12 @@ public class ItemController : MonoBehaviour
             item1.GetComponent<DropItemController>().itemName = GameManager.instance.item.itemList[itemId - 1].dropItemName1;
             item1.GetComponent<DropItemController>().itemId = GameManager.instance.item.itemList[itemId - 1].dropItemId1;
 
+            /*
             GameObject item2 = Instantiate(GameManager.instance.item.itemList[itemId - 1].dropPrefab2);
             item2.transform.position = new Vector3(transform.position.x + hPos2, transform.position.y + vPos2, 0);
             item2.GetComponent<DropItemController>().itemName = GameManager.instance.item.itemList[itemId - 1].dropItemName2;
             item2.GetComponent<DropItemController>().itemId = GameManager.instance.item.itemList[itemId - 1].dropItemId2;
+            */
 
             // アイテムボックスを削除
             Destroy(gameObject);
