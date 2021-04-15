@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
     public bool wpnFlag2 = false;
     public bool wpnSelectFlag = false;
 
+    // テキスト操作
+    public GameObject wpnActionText;
+
     public static GameManager instance;
 
     private void Awake()
@@ -54,6 +57,7 @@ public class GameManager : MonoBehaviour
         itemPanel.SetActive(false);
         wpnPanel.SetActive(false);
         syntheticPanel.SetActive(false);
+        wpnActionText.SetActive(false);
 
         itemFlagManager = GameObject.Find("ItemFlagManager").GetComponent<ItemFlagManager>();
     }
@@ -271,6 +275,7 @@ public class GameManager : MonoBehaviour
     // 武器の装備
     void WpnEquipment(int itemId)
     {
+        wpnActionText.SetActive(true);
         Transform player = GameObject.FindGameObjectWithTag("Player").transform;
         Instantiate(wpnItem.itemList[itemId].itemPrefab, new Vector3(player.transform.position.x, player.transform.position.y, 0), Quaternion.identity);
     }
