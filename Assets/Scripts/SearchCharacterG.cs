@@ -17,7 +17,7 @@ public class SearchCharacterG : MonoBehaviour
         if (col.tag == "Player")
         {
             //Debug.Log("発見");
-            moveEnemy.speedG = 5;
+            moveEnemy.speedG += 2;
         }
         
     }
