@@ -24,7 +24,7 @@ public class BossController : MonoBehaviour
         moveEnemy.speedB = 8;
         moveEnemy.searchDistanceB = 25;
         MaxLife = 5;
-        nowLife = 5;
+        nowLife = MaxLife;
 
         bossSlider = GameObject.Find("EnemySlider").GetComponent<Slider>();
 
@@ -45,6 +45,7 @@ public class BossController : MonoBehaviour
             AudioManager.instance.PlayBGM(1);
             Destroy(this.gameObject);
         }
+        bossSlider.value = nowLife;
     }
 
 
@@ -59,9 +60,18 @@ public class BossController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        nowLife -= 1;
-        Debug.Log("ダメージ! 残りHP" + nowLife);
+        //nowLife -= 1;
+        //Debug.Log("ダメージ! 残りHP" + nowLife);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Burner" || other.gameObject.tag == "Yumiya" || other.gameObject.tag == "Bullet")
+        {
+            nowLife -= 1;
+        }
+    }
+
     public void Shot()
     {
         // 弾をプレイヤーと同じ位置/角度で作成
