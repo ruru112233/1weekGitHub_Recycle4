@@ -12,6 +12,8 @@ public class BossController : MonoBehaviour
     int MaxLife;
     int nowLife;
 
+    public Animator anime;
+
     [SerializeField]
     private GameObject _burret; 
 
@@ -75,6 +77,14 @@ public class BossController : MonoBehaviour
 
     public void Shot()
     {
+        anime.SetTrigger("Shot");
+        StartCoroutine(ShotWaitTime());
+    }
+
+    IEnumerator ShotWaitTime()
+    {
+        yield return new WaitForSeconds(0.5f);
+
         // 弾をプレイヤーと同じ位置/角度で作成
         Instantiate(_burret, _tf.position, _tf.rotation);
     }

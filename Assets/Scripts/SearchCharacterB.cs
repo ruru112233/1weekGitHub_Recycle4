@@ -21,7 +21,6 @@ public class SearchCharacterB : MonoBehaviour
         {
             Debug.Log("発見");
             bossController.Shot();
-
         }
         
     }
