@@ -31,6 +31,19 @@ public class MoveEnemy : MonoBehaviour
     int countRight;
     int countLeft;
 
+    //ハエ
+    public float speedK;
+    public bool isSearchK;
+    public int searchDistanceK;
+    bool isRightUpK;
+    bool isRightDownK;
+    bool isLeftUpK;
+    bool isLeftDownK;
+    float startPositionYK;
+    float nowPositionK;
+    int countRightK;
+    int countLeftK;
+
     //ボス
     public float speedB;
     public bool isBattleB;
@@ -61,6 +74,14 @@ public class MoveEnemy : MonoBehaviour
         startPositionYH = transform.position.y;
         countRight = 0;
         countLeft = 0;
+        //蜘蛛
+        isRightUpK = true;
+        isRightDownK = false;
+        isLeftUpK = false;
+        isLeftDownK = false;
+        startPositionYK = transform.position.y;
+        countRightK = 0;
+        countLeftK = 0;
         //ボス
         isRightB = true;
         isDownB = false;
@@ -231,6 +252,93 @@ public class MoveEnemy : MonoBehaviour
                     countLeft = 0;
                     isLeftDownH = false;
                     isRightUpH = true;
+                }
+            }
+        }
+    }
+    //蜘蛛見回り
+    public void kumoSearch()
+    {
+        if (isRightUpK)
+        {
+            nowPositionK = transform.position.y;
+            //Debug.Log("右上");
+            if (nowPositionK - startPositionYK < searchDistanceK)
+            {
+                transform.position += new Vector3(speedK * Time.deltaTime, speedK * Time.deltaTime, 0);
+            }
+            else
+            {
+                startPositionYK = transform.position.y;
+                isRightUpK = false;
+                isRightDownK = true;
+            }
+        }
+        if (isRightDownK)
+        {
+            //Debug.Log("右下");
+            nowPositionK = transform.position.y;
+            if (nowPositionK - startPositionYK > -searchDistanceK)
+            {
+                transform.position += new Vector3(speedK * Time.deltaTime, -speedK * Time.deltaTime, 0);
+            }
+            else
+            {
+                startPositionYK = transform.position.y;
+                if (countRightK == 0)
+                {
+                    countRightK = 1;
+                    isRightDownK = false;
+                    isRightUpK = true;
+
+                }
+                else
+                {
+                    countRightK = 0;
+                    isRightDownK = false;
+                    isLeftUpK = true;
+                }
+
+            }
+        }
+        if (isLeftUpK)
+        {
+            //Debug.Log("左上");
+            nowPositionK = transform.position.y;
+            if (nowPositionK - startPositionYK < searchDistanceK)
+            {
+                transform.position += new Vector3(-speedK * Time.deltaTime, speedK * Time.deltaTime, 0);
+            }
+            else
+            {
+                startPositionYK = transform.position.y;
+                isLeftUpK = false;
+                isLeftDownK = true;
+            }
+        }
+        if (isLeftDownK)
+        {
+            //Debug.Log("左下");
+            nowPositionK = transform.position.y;
+            if (nowPositionK - startPositionYK > -searchDistanceK)
+            {
+                transform.position += new Vector3(-speedK * Time.deltaTime, -speedK * Time.deltaTime, 0);
+            }
+            else
+            {
+                startPositionYK = transform.position.y;
+                if (countLeftK == 0)
+                {
+                    countLeftK = 1;
+                    isLeftDownK = false;
+                    isLeftUpK = true;
+
+                }
+                else
+                {
+                    countLeftK = 0;
+                    isLeftDownK = false;
+                    isRightUpK = true;
                 }
             }
         }
