@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour
     // ドアの制御
     public bool doorFlag = false;
 
+    public GameObject enemySlider;
+
     public static GameManager instance;
 
     private void Awake()
@@ -68,6 +70,7 @@ public class GameManager : MonoBehaviour
         wpnActionText.SetActive(false);
         clearPanel.SetActive(false);
         gameOverPanel.SetActive(false);
+        enemySlider.SetActive(false);
 
         moveFlag = true;
 
