@@ -47,6 +47,7 @@ public class GasBurner : MonoBehaviour
 
             if (burnerObj == null)
             {
+                AudioManager.instance.PlaySE(3);
                 //Instantiate(burnerPrefab, new Vector3(burnerPoint.transform.position.x, burnerPrefab.transform.position.y, 0), Quaternion.identity);
                 Instantiate(burnerPrefab, burnerPoint);
 

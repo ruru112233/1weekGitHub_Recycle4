@@ -16,6 +16,7 @@ public class Door : MonoBehaviour
     {
         if (GameManager.instance.doorFlag)
         {
+            AudioManager.instance.PlaySE(7);
             Destroy(gameObject);
         }
     }

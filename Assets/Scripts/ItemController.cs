@@ -18,6 +18,8 @@ public class ItemController : MonoBehaviour
             item1.GetComponent<DropItemController>().itemName = GameManager.instance.item.itemList[itemId - 1].dropItemName1;
             item1.GetComponent<DropItemController>().itemId = GameManager.instance.item.itemList[itemId - 1].dropItemId1;
 
+            AudioManager.instance.PlaySE(0);
+
             /*
             GameObject item2 = Instantiate(GameManager.instance.item.itemList[itemId - 1].dropPrefab2);
             item2.transform.position = new Vector3(transform.position.x + hPos2, transform.position.y + vPos2, 0);

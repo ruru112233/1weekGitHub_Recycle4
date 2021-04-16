@@ -12,6 +12,7 @@ public class DropItemController : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            AudioManager.instance.PlaySE(0);
             GameObject itemText = Instantiate(GameManager.instance.itemText) as GameObject;
             itemText.GetComponent<Text>().text = itemName;
             itemText.GetComponent<SelectebleText>().itemId = itemId;

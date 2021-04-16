@@ -17,6 +17,8 @@ public class SelectebleText : Selectable
         //base.OnSelect(eventData);
         Debug.Log($"{gameObject.GetComponent<Text>().text}が選択された");
 
+        AudioManager.instance.PlaySE(9);
+
         OnSelectItem.Invoke(transform);
     }
 
