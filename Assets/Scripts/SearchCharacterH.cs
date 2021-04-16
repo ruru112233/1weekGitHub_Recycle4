@@ -19,7 +19,7 @@ public class SearchCharacterH : MonoBehaviour
             //Debug.Log("発見");
             if (moveEnemy.speedH < 40)
             {
-                moveEnemy.speedH += 4;
+                moveEnemy.speedH += 3;
 
             }
         }
