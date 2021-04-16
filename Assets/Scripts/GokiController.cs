@@ -47,7 +47,7 @@ public class GokiController : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.tag == "yumiya" || col.tag == "Bullet" || col.tag == "Burner")
+        if (col.tag == "Yumiya" || col.tag == "Bullet" || col.tag == "Burner")
         {
             life -= 3;
 
