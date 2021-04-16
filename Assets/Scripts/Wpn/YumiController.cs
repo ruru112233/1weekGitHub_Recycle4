@@ -66,7 +66,7 @@ public class YumiController : MonoBehaviour
 
             if (waitTime == 0)
             {
-                AudioManager.instance.PlaySE(3);
+                AudioManager.instance.PlaySE(11);
                 GameObject yumiyaPrefab = Instantiate(yumiya) as GameObject;
 
                 Vector3 force = this.gameObject.transform.up * -speed;
