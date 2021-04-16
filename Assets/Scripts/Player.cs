@@ -1,20 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     public float speed;
     Animator anime;
 
+    Slider slider;
+
+    int maxHp = 5;
+    int nowHp = 5;
+
     private void Start()
     {
         anime = transform.GetComponent<Animator>();
+        slider = GameObject.Find("Slider").GetComponent<Slider>();
+        slider.maxValue = maxHp;
+        slider.value = nowHp;
     }
 
     private void FixedUpdate()
     {
-        if (!GameManager.instance.itemListFlag && !GameManager.instance.wpnFlag)
+        if (!GameManager.instance.itemListFlag && 
+            !GameManager.instance.wpnFlag &&
+            GameManager.instance.moveFlag)
         {
             float x = Input.GetAxis("Horizontal");
             float y = Input.GetAxis("Vertical");
@@ -61,7 +72,12 @@ public class Player : MonoBehaviour
             }
         }
 
+        // プレイヤーのHP
+        slider.value = nowHp;
+
     }
+
+    
 
     // プレイヤーのアニメーション
     void MoveAnime(string flagName)
@@ -74,5 +90,25 @@ public class Player : MonoBehaviour
 
         anime.SetBool(flagName ,true);
 
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "EnemyAttack")
+        {
+            StartCoroutine(OnDamage());
+        }
+    }
+
+    IEnumerator OnDamage()
+    {
+        nowHp -= 1;
+        anime.SetTrigger("damage");
+        GameManager.instance.moveFlag = false;
+
+        yield return new WaitForSeconds(0.6f);
+
+        GameManager.instance.moveFlag = true;
     }
 }

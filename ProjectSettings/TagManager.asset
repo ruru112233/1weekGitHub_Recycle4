@@ -9,6 +9,7 @@ TagManager:
   - Wpn
   - WpnText
   - Burner
+  - EnemyAttack
   layers:
   - Default
   - TransparentFX
