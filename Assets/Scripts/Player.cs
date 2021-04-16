@@ -75,6 +75,12 @@ public class Player : MonoBehaviour
         // プレイヤーのHP
         slider.value = nowHp;
 
+        if (nowHp <= 0)
+        {
+            nowHp = 0;
+            GameManager.instance.gameOverPanel.SetActive(true);
+        }
+
     }
 
     

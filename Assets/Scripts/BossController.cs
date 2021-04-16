@@ -25,6 +25,15 @@ public class BossController : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (life <= 0)
+        {
+            life = 0;
+            GameManager.instance.clearPanel.SetActive(true);
+            Destroy(this.gameObject);
+        }
+    }
 
 
     private void FixedUpdate()
@@ -32,11 +41,6 @@ public class BossController : MonoBehaviour
         if (moveEnemy.isBattleB)
         {
             moveEnemy.BossBattle();
-        }
-
-        if (life == 0)
-        {
-            Destroy(this.gameObject);
         }
 
     }
