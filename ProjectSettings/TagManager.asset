@@ -10,6 +10,8 @@ TagManager:
   - WpnText
   - Burner
   - EnemyAttack
+  - Bullet
+  - Yumiya
   layers:
   - Default
   - TransparentFX
