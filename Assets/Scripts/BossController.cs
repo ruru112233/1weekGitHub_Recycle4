@@ -23,7 +23,7 @@ public class BossController : MonoBehaviour
         moveEnemy.isBattleB = false;
         moveEnemy.speedB = 8;
         moveEnemy.searchDistanceB = 25;
-        MaxLife = 5;
+        MaxLife = 30;
         nowLife = MaxLife;
 
         bossSlider = GameObject.Find("EnemySlider").GetComponent<Slider>();
@@ -69,6 +69,7 @@ public class BossController : MonoBehaviour
         if (other.gameObject.tag == "Burner" || other.gameObject.tag == "Yumiya" || other.gameObject.tag == "Bullet")
         {
             nowLife -= 1;
+            Debug.Log("ダメージ! 残りHP" + nowLife);
         }
     }
 

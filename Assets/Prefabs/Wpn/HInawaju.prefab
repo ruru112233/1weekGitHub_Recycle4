@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1437489280594653874, guid: 5da396843ade97246962ae131ecfb83b, type: 3}
   firePoint: {fileID: 5455437252852342514}
-  speed: 300
+  speed: 400
 --- !u!1 &5455437252852342513
 GameObject:
   m_ObjectHideFlags: 0

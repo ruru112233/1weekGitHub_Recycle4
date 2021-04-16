@@ -23,8 +23,6 @@ public class DelTime : MonoBehaviour
     {
         DelTimer += Time.deltaTime;
 
-        Debug.Log(DelTimer);
-
         if (DelTimer >= 2)
         {
             Destroy(gameObject);
