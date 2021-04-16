@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public GameObject wpnPanel;
     public GameObject syntheticPanel;
 
+    public GameObject clearPanel, gameOverPanel;
+
     public ItemManager item;
     public ItemManager wpnItem;
 
@@ -64,6 +66,8 @@ public class GameManager : MonoBehaviour
         wpnPanel.SetActive(false);
         syntheticPanel.SetActive(false);
         wpnActionText.SetActive(false);
+        clearPanel.SetActive(false);
+        gameOverPanel.SetActive(false);
 
         moveFlag = true;
 
