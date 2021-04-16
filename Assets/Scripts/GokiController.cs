@@ -37,15 +37,20 @@ public class GokiController : MonoBehaviour
 
         }
 
-        if (life == 0)
+        if (life <= 0)
         {
             Destroy(this.gameObject);
         }
 
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    
+    void OnTriggerEnter2D(Collider2D col)
     {
-        life -= 1;
-        Debug.Log("ダメージ! 残りHP" + life);
+        if (col.tag == "yumiya" || col.tag == "Bullet" || col.tag == "Burner")
+        {
+            life -= 3;
+
+        }
+
     }
 }
