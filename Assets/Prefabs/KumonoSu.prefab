@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5424830304940508000}
   - component: {fileID: 9148268440830948737}
   - component: {fileID: 4271982754812170804}
+  - component: {fileID: 5109683455790131013}
   m_Layer: 0
   m_Name: KumonoSu
   m_TagString: Untagged
@@ -94,3 +95,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: affd0810b60dd42eebb0531a701244c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &5109683455790131013
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6971663481731431486}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
