@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossController : MonoBehaviour
 {
     private MoveEnemy moveEnemy;
 
-    int life;
+    public Slider bossSlider;
+
+    int MaxLife;
+    int nowLife;
 
     [SerializeField]
     private GameObject _burret; 
@@ -16,10 +20,14 @@ public class BossController : MonoBehaviour
     void Start()
     {
         moveEnemy = GetComponentInParent<MoveEnemy>();
-        moveEnemy.isBattleB = true;
+        moveEnemy.isBattleB = false;
         moveEnemy.speedB = 8;
         moveEnemy.searchDistanceB = 25;
-        life = 5;
+        MaxLife = 5;
+        nowLife = 5;
+
+        bossSlider.maxValue = MaxLife;
+        bossSlider.value = nowLife;
 
         _tf = this.transform;
 
@@ -27,9 +35,10 @@ public class BossController : MonoBehaviour
 
     private void Update()
     {
-        if (life <= 0)
+        if (nowLife <= 0)
         {
-            life = 0;
+            nowLife = 0;
+            GameManager.instance.enemySlider.SetActive(false);
             GameManager.instance.clearPanel.SetActive(true);
             AudioManager.instance.PlayBGM(1);
             Destroy(this.gameObject);
@@ -48,8 +57,8 @@ public class BossController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        life -= 1;
-        Debug.Log("ダメージ! 残りHP" + life);
+        nowLife -= 1;
+        Debug.Log("ダメージ! 残りHP" + nowLife);
     }
     public void Shot()
     {

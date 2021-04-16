@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         anime = transform.GetComponent<Animator>();
-        slider = GameObject.Find("Slider").GetComponent<Slider>();
+        slider = GameObject.Find("PlayerSlider").GetComponent<Slider>();
         slider.maxValue = maxHp;
         slider.value = nowHp;
     }
@@ -78,6 +78,7 @@ public class Player : MonoBehaviour
         if (nowHp == 0)
         {
             nowHp = -1;
+            GameManager.instance.enemySlider.SetActive(false);
             AudioManager.instance.PlayBGM(2);
             GameManager.instance.gameOverPanel.SetActive(true);
         }
