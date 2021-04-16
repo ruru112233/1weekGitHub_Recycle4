@@ -41,6 +41,9 @@ public class GameManager : MonoBehaviour
     // テキスト操作
     public GameObject wpnActionText;
 
+    // プレイヤーの操作制御
+    public bool moveFlag = true;
+
     public static GameManager instance;
 
     private void Awake()
@@ -58,6 +61,8 @@ public class GameManager : MonoBehaviour
         wpnPanel.SetActive(false);
         syntheticPanel.SetActive(false);
         wpnActionText.SetActive(false);
+
+        moveFlag = true;
 
         itemFlagManager = GameObject.Find("ItemFlagManager").GetComponent<ItemFlagManager>();
     }
