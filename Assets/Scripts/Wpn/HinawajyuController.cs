@@ -46,6 +46,7 @@ public class HinawajyuController : MonoBehaviour
         // 銃弾の発射
         if (Input.GetKeyDown(KeyCode.G))
         {
+            AudioManager.instance.PlaySE(10);
             GameObject bulletPrefab = Instantiate(bullet) as GameObject;
 
             Vector3 force = this.gameObject.transform.up * -speed;

@@ -75,9 +75,10 @@ public class Player : MonoBehaviour
         // プレイヤーのHP
         slider.value = nowHp;
 
-        if (nowHp <= 0)
+        if (nowHp == 0)
         {
-            nowHp = 0;
+            nowHp = -1;
+            AudioManager.instance.PlayBGM(2);
             GameManager.instance.gameOverPanel.SetActive(true);
         }
 
@@ -111,6 +112,7 @@ public class Player : MonoBehaviour
     {
         nowHp -= 1;
         anime.SetTrigger("damage");
+        AudioManager.instance.PlaySE(7);
         GameManager.instance.moveFlag = false;
 
         yield return new WaitForSeconds(0.6f);

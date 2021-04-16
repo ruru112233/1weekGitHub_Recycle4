@@ -72,6 +72,8 @@ public class GameManager : MonoBehaviour
         moveFlag = true;
 
         itemFlagManager = GameObject.Find("ItemFlagManager").GetComponent<ItemFlagManager>();
+
+        AudioManager.instance.PlayBGM(3);
     }
 
     // Update is called once per frame
@@ -94,6 +96,15 @@ public class GameManager : MonoBehaviour
             itemPanel.SetActive(itemListFlag);
             syntheticPanel.SetActive(itemListFlag);
 
+            if (itemListFlag)
+            {
+                AudioManager.instance.PlaySE(0);
+            }
+            else
+            {
+                AudioManager.instance.PlaySE(1);
+            }
+
             wpnFlag = false;
             wpnPanel.SetActive(wpnFlag);
             itemFlag2 = true;
@@ -108,7 +119,15 @@ public class GameManager : MonoBehaviour
             DestroyArrow();
 
             wpnPanel.SetActive(wpnFlag);
-            //selectItem.NewSelectItem();
+
+            if (wpnFlag)
+            {
+                AudioManager.instance.PlaySE(0);
+            }
+            else
+            {
+                AudioManager.instance.PlaySE(1);
+            }
 
             itemListFlag = false;
             itemPanel.SetActive(itemListFlag);
@@ -127,6 +146,7 @@ public class GameManager : MonoBehaviour
                 {
                     if (synthetic.synthetic1Id == 0)
                     {
+                        AudioManager.instance.PlaySE(9);
                         GameObject item1 = selectItem.transform.GetChild(2).GetChild(0).GetChild(0).GetChild(currentId).gameObject;
                         synthetic.synthetic1Id = item1.GetComponent<SelectebleText>().itemId;
                         synthetic.transform.GetChild(0).GetComponent<Image>().sprite = ChengeSprite(synthetic.synthetic1Id);
@@ -136,6 +156,7 @@ public class GameManager : MonoBehaviour
                     }
                     else if (synthetic.synthetic2Id == 0)
                     {
+                        AudioManager.instance.PlaySE(9);
                         GameObject item2 = selectItem.transform.GetChild(2).GetChild(0).GetChild(0).GetChild(currentId).gameObject;
                         synthetic.synthetic2Id = item2.GetComponent<SelectebleText>().itemId;
                         synthetic.transform.GetChild(1).GetComponent<Image>().sprite = ChengeSprite(synthetic.synthetic2Id);
@@ -160,19 +181,21 @@ public class GameManager : MonoBehaviour
                     WpnText(0);
                     ItemGousei();
                 }
-
-                if (itemFlagManager.wpnItem2)
+                else if (itemFlagManager.wpnItem2)
                 {
                     // 火縄銃
                     WpnText(1);
                     ItemGousei();
                 }
-
-                if (itemFlagManager.wpnItem3)
+                else if (itemFlagManager.wpnItem3)
                 {
                     // 弓
                     WpnText(2);
                     ItemGousei();
+                }
+                else
+                {
+                    AudioManager.instance.PlaySE(4);
                 }
             }
             else
@@ -187,6 +210,8 @@ public class GameManager : MonoBehaviour
                 synthetic.synthetic1Id = 0;
                 synthetic.transform.GetChild(1).GetComponent<Image>().sprite = null;
                 synthetic.synthetic2Id = 0;
+
+                AudioManager.instance.PlaySE(5);
 
                 // 矢印を削除する
                 GameObject arrowObj1 = GameObject.FindGameObjectWithTag("Arrow");
@@ -236,6 +261,8 @@ public class GameManager : MonoBehaviour
 
         if (synthetic.synthetic1Id != 0)
         {
+            AudioManager.instance.PlaySE(1);
+
             GameObject itemText = Instantiate(GameManager.instance.itemText) as GameObject;
             itemText.GetComponent<Text>().text = itemSprite.itemName[synthetic.synthetic1Id - 1];
             itemText.GetComponent<SelectebleText>().itemId = synthetic.synthetic1Id;
@@ -281,12 +308,15 @@ public class GameManager : MonoBehaviour
             synthetic.synthetic2Id = 0;
         }
 
+        AudioManager.instance.PlaySE(5);
+
         itemFlagManager.OffFlag();
     }
 
     // 武器の装備
     void WpnEquipment(int itemId)
     {
+        AudioManager.instance.PlaySE(8);
         wpnActionText.SetActive(true);
         Transform player = GameObject.FindGameObjectWithTag("Player").transform;
         Instantiate(wpnItem.itemList[itemId].itemPrefab, new Vector3(player.transform.position.x, player.transform.position.y, 0), Quaternion.identity);

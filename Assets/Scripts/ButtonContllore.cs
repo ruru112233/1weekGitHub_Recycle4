@@ -8,7 +8,9 @@ public class ButtonContllore : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            AudioManager.instance.PlaySE(2);
             GameManager.instance.doorFlag = true;
+            
             Destroy(gameObject);
         }
     }

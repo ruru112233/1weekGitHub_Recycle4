@@ -31,6 +31,7 @@ public class BossController : MonoBehaviour
         {
             life = 0;
             GameManager.instance.clearPanel.SetActive(true);
+            AudioManager.instance.PlayBGM(1);
             Destroy(this.gameObject);
         }
     }
