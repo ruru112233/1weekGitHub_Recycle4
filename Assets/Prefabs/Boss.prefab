@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossSlider: {fileID: 0}
+  anime: {fileID: 1079863139473264048}
   _burret: {fileID: 78321601552895812, guid: 64c8af390fa3f4b5c865ccc15400cf5c, type: 3}
 --- !u!114 &1079863138272876764
 MonoBehaviour:
@@ -307,7 +308,7 @@ GameObject:
   - component: {fileID: 160695965}
   m_Layer: 0
   m_Name: Icom
-  m_TagString: Untagged
+  m_TagString: EnemyAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
