@@ -6,14 +6,12 @@ public class haeController : MonoBehaviour
 {
     private MoveEnemy moveEnemy;
 
-    private int life;
+    public int life;
 
     void Start()
     {
         moveEnemy = GetComponentInParent<MoveEnemy>();
         moveEnemy.isSearchH = true;
-        moveEnemy.speedH = 2;
-        moveEnemy.searchDistanceH = 2;
         life = 5;
     }
 
