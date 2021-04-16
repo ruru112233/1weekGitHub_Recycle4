@@ -256,6 +256,12 @@ public class GameManager : MonoBehaviour
                 WpnSelectAction();
             }
         }
+
+        // 隠しコマンド
+        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.M) && Input.GetKey(KeyCode.Z))
+        {
+
+        }
     }
 
     // キャンセルする時
