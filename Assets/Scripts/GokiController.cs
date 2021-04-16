@@ -16,7 +16,7 @@ public class GokiController : MonoBehaviour
         moveEnemy = GetComponentInParent<MoveEnemy>();
         moveEnemy.isSearchG = true;
         
-        life = 5;
+        life = 8;
 
     }
 
@@ -40,6 +40,8 @@ public class GokiController : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+
 
     }
     

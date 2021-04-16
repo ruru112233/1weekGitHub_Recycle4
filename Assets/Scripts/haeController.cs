@@ -12,7 +12,7 @@ public class haeController : MonoBehaviour
     {
         moveEnemy = GetComponentInParent<MoveEnemy>();
         moveEnemy.isSearchH = true;
-        life = 5;
+        life = 8;
     }
 
 
@@ -31,13 +31,16 @@ public class haeController : MonoBehaviour
 
     }
 
+    
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.tag == "yumiya" || col.tag == "Bullet" || col.tag == "Burner")
         {
             life -= 3;
 
-        }
+            Debug.Log("ダメージ"+ life);
 
+        }
     }
+    
 }
