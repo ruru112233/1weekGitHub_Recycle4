@@ -12,6 +12,7 @@ TagManager:
   - EnemyAttack
   - Bullet
   - Yumiya
+  - Kumonosu
   layers:
   - Default
   - TransparentFX
