@@ -44,6 +44,9 @@ public class GameManager : MonoBehaviour
     // プレイヤーの操作制御
     public bool moveFlag = true;
 
+    // ドアの制御
+    public bool doorFlag = false;
+
     public static GameManager instance;
 
     private void Awake()
