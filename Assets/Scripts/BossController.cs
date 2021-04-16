@@ -26,6 +26,8 @@ public class BossController : MonoBehaviour
         MaxLife = 5;
         nowLife = 5;
 
+        bossSlider = GameObject.Find("EnemySlider").GetComponent<Slider>();
+
         bossSlider.maxValue = MaxLife;
         bossSlider.value = nowLife;
 
