@@ -98,7 +98,7 @@ MonoBehaviour:
   yumiya: {fileID: 2395604622268284686, guid: f5f88676a0a4dca49b6805c730f2a831, type: 3}
   firePoint: {fileID: 68749901626607137}
   waitCount: 1
-  speed: 200
+  speed: 300
 --- !u!1 &68749901626607136
 GameObject:
   m_ObjectHideFlags: 0

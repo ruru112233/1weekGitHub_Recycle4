@@ -49,6 +49,10 @@ public class GameManager : MonoBehaviour
     // ドアの制御
     public bool doorFlag = false;
 
+    // 隠しコマンドのフラグ
+    bool kakushiFlag1 = false;
+    bool kakushiFlag2 = false;
+
     public GameObject enemySlider;
 
     public static GameManager instance;
@@ -73,6 +77,7 @@ public class GameManager : MonoBehaviour
         enemySlider.SetActive(false);
 
         moveFlag = true;
+        kakushiFlag2 = true;
 
         itemFlagManager = GameObject.Find("ItemFlagManager").GetComponent<ItemFlagManager>();
 
@@ -258,9 +263,21 @@ public class GameManager : MonoBehaviour
         }
 
         // 隠しコマンド
-        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.M) && Input.GetKey(KeyCode.Z))
-        {
+        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.M) && Input.GetKey(KeyCode.Z)) kakushiFlag1 = true;
 
+        if (kakushiFlag1 && kakushiFlag2)
+        {
+            kakushiFlag2 = false;
+            AudioManager.instance.PlaySE(5);
+            Debug.Log("隠しコマンド");
+            // ガスバーナー
+            WpnText(0);
+
+            // 火縄銃
+            WpnText(1);
+
+            // 弓
+            WpnText(2);
         }
     }
 
